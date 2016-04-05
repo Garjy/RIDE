@@ -156,7 +156,7 @@ class NewSuitePathValidator(_AbstractValidator):
         if '__init__' in filename:
             parentdir = os.path.dirname(parentdir)
         if not os.path.exists(parentdir):
-            return 'Parent directory must exist'
+            os.makedirs(parentdir)          #Parent directory must exist.Create it
         return None
 
 
