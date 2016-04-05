@@ -57,8 +57,9 @@ class VirtualList(wx.ListCtrl, ListCtrlAutoWidthMixin):
         self._inform_listeners(event.Index)
 
     def _inform_listeners(self, selected_index):
-        for listener in self._selection_listeners:
-            listener(selected_index)
+        if selected_index >= 0:
+            for listener in self._selection_listeners:
+                listener(selected_index)
 
     def OnGetItemText(self, row, col):
         return self._model.item_text(row, col)
